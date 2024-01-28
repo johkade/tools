@@ -1,5 +1,6 @@
-export const LocationIcon = () => (
+export const LocationIcon = (props: { className?: string }) => (
   <svg
+    className={props.className}
     width="24"
     height="24"
     viewBox="0 0 24 24"

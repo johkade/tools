@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
+import { fancyFont } from "@/utils/fonts"
 
-const inter = Inter({ subsets: ["latin"] })
+const font = fancyFont
 
 export const metadata: Metadata = {
-  title: "Bekki's und Johannes heiraten",
+  title: "Bekki und Johannes heiraten",
   description: "Infos und mehr für unsere Hochzeit am 31.08.2024",
 }
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   )
 }

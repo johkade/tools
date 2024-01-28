@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config: Config = {
   content: [
@@ -13,8 +13,121 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        white: "#ecdfcb",
+        black: "#0e0902",
+        primary: {
+          50: "#f5f6ff",
+          100: "#e6e8fe",
+          200: "#b5bafc",
+          300: "#7880fc",
+          400: "#3d47e8",
+          500: "#040fd9",
+          600: "#0711ae",
+          700: "#0a137e",
+          800: "#0c145e",
+          900: "#0e163c",
+        },
+        blue: {
+          50: "#f5f6ff",
+          100: "#e6e8fe",
+          200: "#b5bafc",
+          300: "#7880fc",
+          400: "#3d47e8",
+          500: "#040fd9",
+          600: "#0711ae",
+          700: "#0a137e",
+          800: "#0c145e",
+          900: "#0e163c",
+        },
+        gray: {
+          50: "#fdf5e6",
+          100: "#f9ebd1",
+          200: "#d4ba8c",
+          300: "#b49c64",
+          400: "#977f4f",
+          500: "#6d562d",
+          600: "#56431a",
+          700: "#372710",
+          800: "#2a1a07",
+          900: "#1f0c06",
+        },
+        yellow: {
+          50: "#fffbeb",
+          100: "#fef3c7",
+          200: "#fde68a",
+          300: "#fcd34d",
+          400: "#fbbf24",
+          500: "#f59e0b",
+          600: "#bc7c13",
+          700: "#7e581b",
+          800: "#543f20",
+          900: "#262527",
+        },
+        red: {
+          50: "#feecec",
+          100: "#fee2e2",
+          200: "#feb4b4",
+          300: "#fc9797",
+          400: "#f15a5a",
+          500: "#ef4444",
+          600: "#b7393e",
+          700: "#7b2d37",
+          800: "#532431",
+          900: "#261c2d",
+        },
+        green: {
+          50: "#ecfdf5",
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          400: "#34d399",
+          500: "#10b981",
+          600: "#10916c",
+          700: "#106554",
+          800: "#104744",
+          900: "#102733",
+        },
+        purple: {
+          50: "#faf5ff",
+          100: "#f3e8ff",
+          200: "#e9d5ff",
+          300: "#d8b4fe",
+          400: "#c084fc",
+          500: "#a855f7",
+          600: "#9333ea",
+          700: "#7e22ce",
+          800: "#6b21a8",
+          900: "#581c87",
+        },
+
+        // Theme BG Colors
+        void: "var(--void)",
+        background: "var(--background)",
+
+        // Theme FG Colors
+        foreground: "var(--foreground)",
+        "foreground-default": "var(--foreground-default)",
+        "foreground-primary": "var(--foreground-primary)",
+        "foreground-secondary": "var(--foreground-secondary)",
+        "foreground-tertiary": "var(--foreground-tertiary)",
+        "foreground-disabled": "var(--foreground-disabled)",
+        "foreground-error": "var(--foreground-error)",
+        "foreground-success": "var(--foreground-success)",
+        "foreground-danger": "var(--foreground-danger)",
+        "foreground-white": "var(--foreground-white)",
+        "foreground-black": "var(--foreground-black)",
+        "foreground-neutral": "var(--foreground-neutral)",
+
+        // Theme Border Colors
+        border: "var(--border)",
+        "border-default": "var(--border-default)",
+        "border-dark": "var(--border-dark)",
+        "border-light": "var(--border-light)",
+        "border-medium": "var(--border-medium)",
+      },
     },
   },
   plugins: [],
-};
-export default config;
+}
+export default config
