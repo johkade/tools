@@ -44,7 +44,7 @@ export const ContactForm = ({ locale }: { locale: "de" | "en" }) => {
           className="flex outline-none focus:ring ring-[#7e766777] rounded-md bg-background border-0 px-2 py-1 items-center justify-center self-end"
         >
           <div className="flex flex-row gap-2 text-[#44341c]">
-            <Typo>{translations.sendButton[locale]}</Typo>
+            <Typo size="xl">{translations.sendButton[locale]}</Typo>
             <CaretRightIcon className="scale-75" />
           </div>
         </button>
