@@ -1,5 +1,4 @@
 import { Typo } from "@/app/components/typo"
-import { CaretRightIcon } from "../../components/caret-right-icon"
 import { LocationIcon } from "../../components/location-icon"
 import { SectionTitle } from "../../components/section-title"
 
