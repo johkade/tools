@@ -9,7 +9,7 @@ const mapsUrl =
 const translations = {
   location: {
     sectionTitle: {
-      de: "Wo is die Feier?",
+      de: "Wo ist die Feier?",
       en: "Where do we celebrate?",
     },
   },
