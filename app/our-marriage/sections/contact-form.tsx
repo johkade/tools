@@ -32,7 +32,7 @@ export const ContactForm = ({ locale }: { locale: "de" | "en" }) => {
         title={translations.sectionTitle[locale]}
         className="mb-4 text-center"
       />
-      <div className="flex flex-col gap-4 min-w-[520px] max-w-full">
+      <div className="flex flex-col gap-4 md:min-w-[520px] self-stretch md:self-center max-w-full">
         <textarea
           className="flex focus:ring ring-[#7e766777] flex-1 outline-none px-4 py-3 rounded-xl bg-background text-foreground-default min-h-[180px] placeholder-foreground-secondary text-3xl"
           value={value}

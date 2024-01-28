@@ -22,8 +22,11 @@ export const Banner = () => {
           priority
         />
         <div className="absolute left-[50%] translate-x-[-50%] bottom-2">
-          <Typo size="4xl" color="white">
-            Save the date – 31.08.2024
+          <Typo size="4xl" color="white" className="text-center">
+            Save the date
+          </Typo>
+          <Typo size="4xl" color="white" className="text-center">
+            31.08.2024
           </Typo>
         </div>
       </div>

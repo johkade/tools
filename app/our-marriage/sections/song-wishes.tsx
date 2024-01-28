@@ -65,10 +65,10 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
         title={translations.sectionTitle[locale]}
         className="mb-4 text-center"
       />
-      <div className="flex flex-row gap-4 min-w-[400px] max-w-screen">
+      <div className="flex flex-row self-stretch gap-4 md:self-center md:min-w-[520px]">
         <input
           type="text"
-          className="flex focus:ring ring-[#7e766777] flex-1 outline-none px-3 py-2 rounded-xl bg-background text-foreground-default placeholder:text-foreground-secondary text-3xl"
+          className="flex flex-1 focus:ring ring-[#7e766777] outline-none px-3 py-2 rounded-xl bg-background text-foreground-default placeholder:text-foreground-secondary text-3xl"
           value={value}
           placeholder={translations.inputPlaceholder[locale]}
           onChange={(e) => setValue(e.target.value)}
@@ -80,34 +80,36 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
           <CaretRightIcon />
         </button>
       </div>
-      <div>
-        <SectionTitle
-          small
-          title={translations.recentWishes[locale]}
-          className="mb-2 mt-4"
-        />
-        <div className="flex flex-col-reverse gap-1" ref={animatedParent}>
-          {wishes.map((w, index) => {
-            if (index < wishes.length - 4) return null
-            const number = wishes.length - index
-            const opacity = { 1: 1, 2: 0.8, 3: 0.75, 4: 0.6 }[number]
-            return (
-              <div
-                key={w.name}
-                className="flex flex-row gap-2 px-5 py-2 bg-background rounded-xl items-center min-w-[320px]"
-                style={{ opacity }}
-              >
-                <HeartIcons />
-                <div>
-                  <Typo size="3xl">{w.name}</Typo>
-                  <Typo size="lg" color="secondary">
-                    from {w.author}
-                  </Typo>
-                </div>
+
+      <SectionTitle
+        small
+        title={translations.recentWishes[locale]}
+        className="mb-2 mt-4"
+      />
+      <div
+        className="flex flex-col-reverse gap-1 self-stretch md:self-center md:min-w-[520px]"
+        ref={animatedParent}
+      >
+        {wishes.map((w, index) => {
+          if (index < wishes.length - 4) return null
+          const number = wishes.length - index
+          const opacity = { 1: 1, 2: 0.8, 3: 0.75, 4: 0.6 }[number]
+          return (
+            <div
+              key={w.name}
+              className="flex flex-row gap-2 px-5 py-2 bg-background rounded-xl items-center"
+              style={{ opacity }}
+            >
+              <HeartIcons />
+              <div>
+                <Typo size="3xl">{w.name}</Typo>
+                <Typo size="lg" color="secondary">
+                  from {w.author}
+                </Typo>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
