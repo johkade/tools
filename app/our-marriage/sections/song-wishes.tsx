@@ -24,10 +24,12 @@ const translations = {
 } as const
 
 const initialWishes = [
-  { name: "Twist and Shout by The Beatles", author: "Bekki & Johannes" },
-  { name: "Dancing Queen by ABBA", author: "Bekki & Johannes" },
-  { name: "Superstition by Stevie Wonder", author: "Bekki & Johannes" },
-  { name: "Sweet Caroline by Neil Diamond", author: "Bekki & Johannes" },
+  {
+    title: "Bohemian Rhapsody",
+    author: "Bekki & Johannes",
+    created_at: "2024-01-27T18:55:02.265663+00:00",
+    local: true,
+  },
 ]
 
 export interface SongWishesProps {
@@ -39,16 +41,27 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
   const [value, setValue] = useState("")
   const animatedParent = useRef<HTMLDivElement>(null)
 
-  const onSubmitWish = () => {
-    if (!value || wishes.find((w) => w.name === value)) return
+  const onSubmitWish = async () => {
+    if (!value || wishes.find((w) => w.title === value)) return
+
+    const author = guests.map((s) => capitalizeFirst(s)).join(" & ")
+
     setWishes((prev) => [
       ...prev,
       {
-        name: value,
-        author: guests.map((s) => capitalizeFirst(s)).join(" & "),
+        title: value,
+        author,
+        created_at: new Date().toISOString(),
+        local: true,
       },
     ])
     setValue("")
+
+    try {
+      await addSong({ author, title: value })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const [wishes, setWishes] = useState(initialWishes)
@@ -58,6 +71,40 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
   useEffect(() => {
     animatedParent.current && autoAnimate(animatedParent.current)
   }, [animatedParent])
+
+  useEffect(() => {
+    const fetchAndSet = async () => {
+      try {
+        const data = await getLatestSongs()
+        if (!Array.isArray(data.data)) {
+          throw new Error("Invalid data detected on client")
+        }
+        const newArr: typeof wishes = []
+
+        for (const wish of data.data) {
+          if (
+            typeof wish.title === "string" &&
+            typeof wish.author === "string"
+          ) {
+            newArr.push({
+              author: wish.author,
+              title: wish.title,
+              local: false,
+              created_at: wish.created_at,
+            })
+          }
+        }
+        setWishes(newArr.reverse())
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchAndSet()
+    const timer = setInterval(fetchAndSet, 5000)
+
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <div className="flex flex-col items-center my-10">
@@ -96,15 +143,15 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
           const opacity = { 1: 1, 2: 0.8, 3: 0.75, 4: 0.6 }[number]
           return (
             <div
-              key={w.name}
+              key={w.title}
               className="flex flex-row gap-2 px-5 py-2 bg-background rounded-xl items-center"
               style={{ opacity }}
             >
               <HeartIcons />
               <div>
-                <Typo size="3xl">{w.name}</Typo>
+                <Typo size="3xl">{w.title}</Typo>
                 <Typo size="lg" color="secondary">
-                  from {w.author}
+                  {locale === "de" ? "von" : "from"} {w.author}
                 </Typo>
               </div>
             </div>
@@ -113,4 +160,31 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
       </div>
     </div>
   )
+}
+
+async function addSong(data: { title: string; author: string }) {
+  const resp = await fetch("/api/wishes", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+  if (resp.status !== 200) throw new Error("FAILED")
+
+  return resp.json()
+}
+
+async function getLatestSongs() {
+  const resp = await fetch("/api/wishes", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+  if (resp.status !== 200) throw new Error("FAILED")
+
+  return resp.json()
 }
