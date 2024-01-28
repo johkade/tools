@@ -18,7 +18,7 @@ const translations = {
     en: "Recently added:",
   },
   inputPlaceholder: {
-    de: "Lied/Link eingeben",
+    de: "Lied eingeben",
     en: "Wish for a song",
   },
 } as const
