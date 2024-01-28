@@ -28,7 +28,34 @@ export const Intro = ({ guests, locale }: IntroProps) => {
 }
 
 function getGender(name: string) {
-  if (["thomas"].includes(name.toLowerCase())) return "male"
+  if (
+    [
+      "thomas",
+      "burkhardt",
+      "martin",
+      "andreas",
+      "jakob",
+      "dierk",
+      "manfred",
+      "stephan",
+      "helmut",
+      "tobi",
+      "tobias",
+      "titzian",
+      "tizian",
+      "titzi",
+      "titzian",
+      "jacob",
+      "sebastian",
+      "seb",
+      "reza",
+      "rodrigo",
+      "harry",
+      "felix",
+      "davide",
+    ].includes(name.toLowerCase())
+  )
+    return "male"
 
   return "female"
 }
