@@ -35,7 +35,7 @@ export default function OurMarriage(props: { searchParams?: SearchParams }) {
         <Separator />
         <SongWishes guests={guests} locale={locale} />
         <Separator />
-        <ContactForm locale={locale} />
+        <ContactForm locale={locale} guests={guests} />
       </div>
     </main>
   )

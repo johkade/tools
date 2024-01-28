@@ -3,6 +3,7 @@ import { useState } from "react"
 import { CaretRightIcon } from "../../components/caret-right-icon"
 import { SectionTitle } from "../../components/section-title"
 import { Typo } from "@/app/components/typo"
+import { capitalizeFirst } from "@/utils/misc"
 
 const translations = {
   sectionTitle: {
@@ -19,11 +20,24 @@ const translations = {
   },
 } as const
 
-export const ContactForm = ({ locale }: { locale: "de" | "en" }) => {
+export const ContactForm = ({
+  locale,
+  guests,
+}: {
+  locale: "de" | "en"
+  guests: string[]
+}) => {
   const [value, setValue] = useState("")
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (!value) return
     setValue("")
+    try {
+      const author = guests.map((s) => capitalizeFirst(s)).join(" & ")
+      await sendMessage({ author, text: value })
+      console.log("sent: " + author)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -43,12 +57,26 @@ export const ContactForm = ({ locale }: { locale: "de" | "en" }) => {
           onClick={onSubmit}
           className="flex outline-none focus:ring ring-[#7e766777] rounded-md bg-background border-0 px-2 py-1 items-center justify-center self-end"
         >
-          <div className="flex flex-row gap-2 text-[#44341c]">
-            <Typo size="xl">{translations.sendButton[locale]}</Typo>
+          <div className="flex flex-row items-center gap-2 text-[#44341c]">
+            <Typo size="2xl">{translations.sendButton[locale]}</Typo>
             <CaretRightIcon className="scale-75" />
           </div>
         </button>
       </div>
     </div>
   )
+}
+
+async function sendMessage(data: { text: string; author: string }) {
+  const resp = await fetch("/api/messages", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+  if (resp.status !== 200) throw new Error("FAILED")
+
+  return resp.json()
 }

@@ -4,7 +4,7 @@ import { capitalizeFirst } from "@/utils/misc"
 const translations = {
   intro: {
     de: "Wir freuen uns, euch am 31.08.2024 in der Bleaml Alm in Fichtelberg begrüßen zu dürfen, um gemeinsam mit euch unsere Hochzeit zu feiern. Ihr findet alle wichtigen Infos unten.",
-    en: "We are pleased to welcome you on 31.08.2024 at Bleaml Alm in Fichtelberg to celebrate our wedding together with you. You will find all important information below.",
+    en: "We're looking forward to welcome you on 31.08.2024 at Bleaml Alm in Fichtelberg to celebrate our wedding together with you. You'll find all important information below.",
   },
 } as const
 
