@@ -47,13 +47,13 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
     const author = guests.map((s) => capitalizeFirst(s)).join(" & ")
 
     setWishes((prev) => [
-      ...prev,
       {
         title: value,
         author,
         created_at: new Date().toISOString(),
         local: true,
       },
+      ...prev,
     ])
     setValue("")
 
@@ -94,7 +94,7 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
             })
           }
         }
-        setWishes(newArr.reverse())
+        setWishes([...newArr])
       } catch (error) {
         console.log(error)
       }
@@ -134,13 +134,13 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
         className="mb-2 mt-4"
       />
       <div
-        className="flex flex-col-reverse gap-1 self-stretch md:self-center md:min-w-[520px]"
+        className="flex flex-col gap-1 self-stretch md:self-center md:min-w-[520px]"
         ref={animatedParent}
       >
         {wishes.map((w, index) => {
-          if (index < wishes.length - 4) return null
-          const number = wishes.length - index
-          const opacity = { 1: 1, 2: 0.8, 3: 0.75, 4: 0.6 }[number]
+          if (index >= 4) return null
+          const number = index + 1
+          const opacity = { 1: 1, 2: 0.8, 3: 0.75, 4: 0.6, 5: 0 }[number]
           return (
             <div
               key={w.title}

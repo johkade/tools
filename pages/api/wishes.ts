@@ -47,12 +47,12 @@ export default async function handler(
     const supabase = createClient(SUPABASE_URL, KEY)
 
     try {
-      // Retrieve the latest 5 entries
+      // Retrieve the latest 4 entries
       const { data, error } = await supabase
         .from("song_wishes")
         .select("*")
         .order("created_at", { ascending: false })
-        .limit(5)
+        .limit(4)
 
       if (error) {
         console.error(error)
