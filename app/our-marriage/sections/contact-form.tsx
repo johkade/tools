@@ -1,9 +1,11 @@
 "use client"
+import { Typo } from "@/app/components/typo"
+import { capitalizeFirst } from "@/utils/misc"
+import { cn } from "@/utils/styling"
+import { showToast } from "@/utils/toast"
 import { useState } from "react"
 import { CaretRightIcon } from "../../components/caret-right-icon"
 import { SectionTitle } from "../../components/section-title"
-import { Typo } from "@/app/components/typo"
-import { capitalizeFirst } from "@/utils/misc"
 
 const translations = {
   sectionTitle: {
@@ -13,6 +15,10 @@ const translations = {
   sendButton: {
     de: "Senden",
     en: "Send",
+  },
+  sent: {
+    de: "Mit Liebe gesendet 💗",
+    en: "Sent w/ love 💗",
   },
   inputPlaceholder: {
     de: "Vielleicht hast du eine Unverträglichkeit oder wolltest uns nur mitteilen, wie sehr du dich freust?",
@@ -28,15 +34,24 @@ export const ContactForm = ({
   guests: string[]
 }) => {
   const [value, setValue] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+
   const onSubmit = async () => {
     if (!value) return
-    setValue("")
+
     try {
+      setIsLoading(true)
       const author = guests.map((s) => capitalizeFirst(s)).join(" & ")
       await sendMessage({ author, text: value })
-      console.log("sent: " + author)
+      await new Promise((resolve) => {
+        setTimeout(resolve, 400)
+      })
+      showToast(translations.sent[locale])
+      setValue("")
     } catch (error) {
       console.log(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -55,7 +70,11 @@ export const ContactForm = ({
         />
         <button
           onClick={onSubmit}
-          className="flex outline-none focus:ring ring-[#7e766777] rounded-md bg-background border-0 px-2 py-1 items-center justify-center self-end"
+          className={cn(
+            "flex outline-none focus:ring ring-[#7e766777] rounded-md bg-background border-0 px-2 py-1 items-center justify-center self-end",
+            isLoading && "opacity-30"
+          )}
+          disabled={isLoading}
         >
           <div className="flex flex-row items-center gap-2 text-[#44341c]">
             <Typo size="2xl">{translations.sendButton[locale]}</Typo>

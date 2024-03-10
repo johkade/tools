@@ -1,0 +1,41 @@
+type VisitorGroup = { visitors: { givenName: string }[]; locale?: "en" | "de" }
+
+export const VISITOR_GROUPS: VisitorGroup[] = [
+  { visitors: [{ givenName: "Barbara" }, { givenName: "Dierk" }] },
+  { visitors: [{ givenName: "Heidi" }, { givenName: "Burkhardt" }] },
+  { visitors: [{ givenName: "Heidelore" }, { givenName: "Manfred" }] },
+  { visitors: [{ givenName: "Janna" }, { givenName: "Martin" }] },
+  { visitors: [{ givenName: "Martin" }] },
+  { visitors: [{ givenName: "Jakob" }, { givenName: "Hannah" }] },
+  { visitors: [{ givenName: "Lisa" }, { givenName: "Andreas" }] },
+  {
+    visitors: [{ givenName: "Harriet" }, { givenName: "Harry" }],
+    locale: "en",
+  },
+  {
+    visitors: [{ givenName: "Marina" }, { givenName: "Rodrigo" }],
+    locale: "en",
+  },
+  { visitors: [{ givenName: "Pauline" }, { givenName: "Felix" }] },
+  { visitors: [{ givenName: "Franziska" }, { givenName: "Stephan" }] },
+  { visitors: [{ givenName: "Sophie" }, { givenName: "Tobi" }] },
+  { visitors: [{ givenName: "Sophie" }, { givenName: "Tobi" }] }, // schimpl
+  { visitors: [{ givenName: "Katrin" }, { givenName: "Thomas" }] },
+  { visitors: [{ givenName: "Selina" }, { givenName: "Tizian" }] },
+  { visitors: [{ givenName: "Alicia" }, { givenName: "Anton" }] },
+  { visitors: [{ givenName: "Lena" }, { givenName: "Jacob" }] },
+  { visitors: [{ givenName: "Vera" }, { givenName: "Verena" }] },
+  { visitors: [{ givenName: "Sebastian" }] },
+  { visitors: [{ givenName: "Jule" }] },
+  { visitors: [{ givenName: "Judith" }] },
+  { visitors: [{ givenName: "Julia" }] },
+  { visitors: [{ givenName: "Kim" }] },
+  { visitors: [{ givenName: "Chiara" }, { givenName: "Stefan" }] },
+  { visitors: [{ givenName: "Caro" }, { givenName: "Frank" }] },
+  { visitors: [{ givenName: "Laura" }, { givenName: "Simon" }] },
+  { visitors: [{ givenName: "Denise" }, { givenName: "Joe" }], locale: "en" },
+  { visitors: [{ givenName: "Davide" }], locale: "en" },
+  { visitors: [{ givenName: "Reza" }], locale: "en" },
+  { visitors: [{ givenName: "Helmut" }] },
+  { visitors: [{ givenName: "Sabine" }, { givenName: "Klaus" }] },
+]

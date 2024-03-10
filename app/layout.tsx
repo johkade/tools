@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { fancyFont } from "@/utils/fonts"
+import { Toaster } from "sonner"
 
 const font = fancyFont
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }

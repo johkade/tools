@@ -7,6 +7,7 @@ import { Typo } from "../../components/typo"
 import autoAnimate from "@formkit/auto-animate"
 import { HeartIcons } from "../../components/heart-icons"
 import { capitalizeFirst } from "@/utils/misc"
+import { showToast } from "@/utils/toast"
 
 const translations = {
   sectionTitle: {
@@ -21,6 +22,85 @@ const translations = {
     de: "Lied eingeben",
     en: "Wish for a song",
   },
+  sent: [
+    { de: "Was für ein Hit 🧨", en: "What a friggin' banger 🧨" },
+    {
+      de: "Wir können's nicht erwarten, dass der Song kommt! 💃",
+      en: "I can't wait 'til this comes on! 💃",
+    },
+    { de: "Ein echter Ohrwurm! 🎵", en: "A real earworm! 🎵" },
+    { de: "Zieh die Tanzschuhe an! 💃", en: "Put on your dancing shoes! 💃" },
+    { de: "Ich liebe diesen Song! 🎶", en: "I love this song! 🎶" },
+    {
+      de: "Die Melodie ist so mitreißend! 🎼",
+      en: "The melody is so catchy! 🎼",
+    },
+    {
+      de: "Der geht mir einfach nicht aus dem Kopf! 🧠",
+      en: "It just can't get out of my head! 🧠",
+    },
+    { de: "Der Beat ist unglaublich! 🔥", en: "The beat is incredible! 🔥" },
+    {
+      de: "Das Lied bringt mich immer zum Lächeln! 😊",
+      en: "This song always brings a smile to my face! 😊",
+    },
+    {
+      de: "Ich schwanke zwischen tanzen und weinen! 😂",
+      en: "I'm torn between dancing and crying! 😂",
+    },
+    {
+      de: "Wenn dieser Song eine Person wäre, würde ich sie heiraten! 💍",
+      en: "If this song were a person, I'd marry it! 💍",
+    },
+    {
+      de: "Mein innerer Tanzbär ist erwacht! 🐻",
+      en: "My inner dancing bear has awakened! 🐻",
+    },
+    {
+      de: "Ich glaube, ich habe gerade meinen neuen Lieblingssong gefunden! 🎵",
+      en: "I think I just found my new favorite song! 🎵",
+    },
+    {
+      de: "Wenn ich ein Superheld wäre, wäre dieser Song mein Thema! 🦸‍♂️",
+      en: "If I were a superhero, this song would be my theme! 🦸‍♂️",
+    },
+    {
+      de: "Dieses Lied macht mich zum Tanzflächen-Tycoon! 💼",
+      en: "This song turns me into a dance floor tycoon! 💼",
+    },
+    {
+      de: "Dieser Song hat mehr Ohrwürmer als ein Regenwald! 🐛",
+      en: "This song has more earworms than a rainforest! 🐛",
+    },
+    {
+      de: "Dieser Song ist heißer als eine Tasse Kaffee! ☕🔥",
+      en: "This song is hotter than a cup of coffee! ☕🔥",
+    },
+    {
+      de: "Ich schwitze schon, und der Song hat noch nicht einmal angefangen! 💦",
+      en: "I'm already sweating and the song hasn't even started yet! 💦",
+    },
+    {
+      de: "Dieses Lied ist so sexy, es sollte einen Warnhinweis haben! ⚠️😏",
+      en: "This song is so sexy, it should come with a warning label! ⚠️😏",
+    },
+    {
+      de: "Ich fühle mich wie ein heißer Tanzkuchen, und dieser Song ist der Zuckerguss! 🍰💃",
+      en: "I feel like a hot dancing cake, and this song is the icing on top! 🍰💃",
+    },
+    {
+      de: "Dieser Song ist wie eine heiße Umarmung für meine Ohren! 🤗🔥",
+      en: "This song is like a hot hug for my ears! 🤗🔥",
+    },
+    {
+      de: "Dieses Lied macht mich wilder als eine Horde Tanzenbären! 🐻💃",
+      en: "This song makes me wilder than a pack of dancing bears! 🐻💃",
+    },
+    {
+      de: "Ich glaube, ich muss nach diesem Lied eine kalte Dusche nehmen! 🚿❄️",
+      en: "I think I'll need a cold shower after this song! 🚿❄️",
+    },
+  ],
 } as const
 
 const initialWishes = [
@@ -55,6 +135,8 @@ export const SongWishes = ({ locale, guests }: SongWishesProps) => {
       },
       ...prev,
     ])
+    const songIndex = randomIntFromInterval(0, translations.sent.length - 1)
+    showToast(translations.sent[songIndex][locale])
     setValue("")
 
     try {
@@ -187,4 +269,7 @@ async function getLatestSongs() {
   if (resp.status !== 200) throw new Error("FAILED")
 
   return resp.json()
+}
+function randomIntFromInterval(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }

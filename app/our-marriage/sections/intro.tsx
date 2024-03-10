@@ -3,8 +3,12 @@ import { capitalizeFirst } from "@/utils/misc"
 
 const translations = {
   intro: {
-    de: "Wir freuen uns, euch am 31.08.2024 in der Bleaml Alm in Fichtelberg begrüßen zu dürfen, um gemeinsam mit euch unsere Hochzeit zu feiern. Ihr findet alle wichtigen Infos unten.",
-    en: "We're looking forward to welcome you on 31.08.2024 at Bleaml Alm in Fichtelberg to celebrate our wedding together with you. You'll find all important information below.",
+    de: "Wir freuen uns, euch am 31.08.2024 in der Bleaml Alm in Fichtelberg begrüßen zu dürfen, um gemeinsam mit euch unsere Hochzeit zu feiern.",
+    en: "We're looking forward to welcoming you 31st of August at Bleaml Alm in Fichtelberg to celebrate our wedding with you.",
+  },
+  introSingle: {
+    de: "Wir freuen uns, dich am 31.08.2024 in der Bleaml Alm in Fichtelberg begrüßen zu dürfen, um gemeinsam mit dir unsere Hochzeit zu feiern.",
+    en: "We're looking forward to welcoming you 31st of August at Bleaml Alm in Fichtelberg to celebrate our wedding with you.",
   },
 } as const
 
@@ -21,7 +25,7 @@ export const Intro = ({ guests, locale }: IntroProps) => {
       </Typo>
 
       <Typo size="4xl" className="text-center">
-        {translations.intro[locale]}
+        {getIntro(guests, locale)}
       </Typo>
     </div>
   )
@@ -35,6 +39,7 @@ function getGender(name: string) {
       "martin",
       "andreas",
       "jakob",
+      "johannes",
       "dierk",
       "manfred",
       "stephan",
@@ -53,6 +58,9 @@ function getGender(name: string) {
       "harry",
       "felix",
       "davide",
+      "mocci",
+      "sebastian",
+      "stefan",
     ].includes(name.toLowerCase())
   )
     return "male"
@@ -89,4 +97,11 @@ function getTitle(guests: string[], locale: "de" | "en") {
 
     return greeting
   }
+}
+
+function getIntro(guests: string[], locale: "de" | "en") {
+  const isSingle = guests.length <= 1
+  return isSingle
+    ? translations.introSingle[locale]
+    : translations.intro[locale]
 }
