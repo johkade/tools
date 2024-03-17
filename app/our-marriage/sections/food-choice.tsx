@@ -123,7 +123,9 @@ export const FoodChoice = ({ locale, guests }: FoodChoiceProps) => {
               size="4xl"
               className={cn("text-center", !meatAmount && "opacity-0")}
             >
-              {Array.from({ length: meatAmount }).fill("X").join("")}
+              {Array.from({ length: meatAmount || 1 })
+                .fill("X")
+                .join("")}
             </Typo>
           </div>
           <div className="flex-1 items-center">
@@ -131,7 +133,9 @@ export const FoodChoice = ({ locale, guests }: FoodChoiceProps) => {
               size="4xl"
               className={cn("text-center", !fishAmount && "opacity-0")}
             >
-              {Array.from({ length: fishAmount }).fill("X").join("")}
+              {Array.from({ length: fishAmount || 1 })
+                .fill("X")
+                .join("")}
             </Typo>
           </div>
           <div className="flex-1 items-center">
@@ -139,7 +143,9 @@ export const FoodChoice = ({ locale, guests }: FoodChoiceProps) => {
               size="4xl"
               className={cn("text-center", !veggieAmount && "opacity-0")}
             >
-              {Array.from({ length: veggieAmount }).fill("X").join("")}
+              {Array.from({ length: veggieAmount || 1 })
+                .fill("X")
+                .join("")}
             </Typo>
           </div>
         </div>
