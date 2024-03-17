@@ -15,11 +15,11 @@ const translations = {
     weatherForecast: { de: "Wetterbericht", en: "Weather forecast" },
     line1: {
       single: {
-        de: "🌺 Sommerlich-schick. ",
+        de: "🌻 Sommerlich-schick. ",
         en: "👙 We’re happy if you wear clothes - even more if it is a casual-chic summer attire.",
       },
       multiple: {
-        de: "🌺 Sommerlich-schick. ",
+        de: "🌻 Sommerlich-schick. ",
         en: "👙 We’re happy if you wear clothes - even more if it is a casual-chic summer attire.",
       },
     },

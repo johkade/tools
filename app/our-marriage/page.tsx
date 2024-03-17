@@ -3,6 +3,7 @@ import { AreYouIn } from "./sections/are-you-in"
 import { Banner } from "./sections/banner"
 import { ContactForm } from "./sections/contact-form"
 import { DressCode } from "./sections/dress-code"
+import { FoodChoice } from "./sections/food-choice"
 import { Intro } from "./sections/intro"
 import { Location } from "./sections/location"
 import { NotFound } from "./sections/not-found"
@@ -34,6 +35,8 @@ export default function OurMarriage(props: { searchParams?: SearchParams }) {
         <Intro guests={guests} locale={locale} />
         <Separator />
         <AreYouIn guests={guests} locale={locale} />
+        <Separator />
+        <FoodChoice guests={guests} locale={locale} />
         <Separator />
         <Location locale={locale} />
         <Separator />
