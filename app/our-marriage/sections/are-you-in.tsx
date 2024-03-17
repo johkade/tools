@@ -154,7 +154,7 @@ export const AreYouIn = ({ locale, guests }: AreYouInProps) => {
       />
       <div
         className={cn(
-          "flex flex-row gap-4 transition-all",
+          "flex flex-row gap-4 transition-all py-6 px-10 bg-background rounded-3xl",
           isIn === "yes"
             ? "translate-x-16"
             : isIn === "no"

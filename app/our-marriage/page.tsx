@@ -1,11 +1,12 @@
 import { Separator } from "../components/separator"
-import { ContactForm } from "./sections/contact-form"
+import { AreYouIn } from "./sections/are-you-in"
 import { Banner } from "./sections/banner"
+import { ContactForm } from "./sections/contact-form"
+import { DressCode } from "./sections/dress-code"
 import { Intro } from "./sections/intro"
 import { Location } from "./sections/location"
 import { NotFound } from "./sections/not-found"
 import { SongWishes } from "./sections/song-wishes"
-import { AreYouIn } from "./sections/are-you-in"
 
 type SearchParams = {
   guests: string | undefined
@@ -37,6 +38,8 @@ export default function OurMarriage(props: { searchParams?: SearchParams }) {
         <Location locale={locale} />
         <Separator />
         <SongWishes guests={guests} locale={locale} />
+        <Separator />
+        <DressCode guests={guests} locale={locale} />
         <Separator />
         <ContactForm locale={locale} guests={guests} />
       </div>
