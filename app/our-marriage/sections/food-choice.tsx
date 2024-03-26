@@ -10,22 +10,22 @@ const translations = {
   foodChoice: {
     sectionTitle: {
       multiple: {
-        de: "Season everything with love",
-        en: "Season everything with love",
+        de: "'Season everything with love'",
+        en: "'Season everything with love'",
       },
       single: {
-        de: "Season everything with love",
-        en: "Season everything with love",
+        de: "'Season everything with love'",
+        en: "'Season everything with love'",
       },
     },
     subTitle: {
       multiple: {
-        de: "Bald gibt's hier mehr Infos, aber wählt gerne schon mal vor.",
-        en: "More info coming soon, but feel free to already preselect.",
+        de: "Wählt hier euer Essen, sobald das Menü feststeht.",
+        en: "Select your meal as soon as the menu is fixed.",
       },
       single: {
-        de: "Bald gibt's hier mehr Infos, aber wählt gerne schon mal vor.",
-        en: "More info coming soon, but feel free to already preselect.",
+        de: "Wähle hier dein Essen, sobald das Menü feststeht.",
+        en: "Select your meal as soon as the menu is fixed.",
       },
     },
   },
