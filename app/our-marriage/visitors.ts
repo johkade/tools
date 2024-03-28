@@ -18,7 +18,7 @@ export const VISITOR_GROUPS: VisitorGroup[] = [
   },
   { visitors: [{ givenName: "Pauline" }, { givenName: "Felix" }] },
   { visitors: [{ givenName: "Franziska" }, { givenName: "Stephan" }] },
-  { visitors: [{ givenName: "Sophie" }, { givenName: "Tobi" }] },
+  { visitors: [{ givenName: "Sophie" }, { givenName: "Tobi_" }] },
   { visitors: [{ givenName: "Sophie" }, { givenName: "Tobi" }] }, // schimpl
   { visitors: [{ givenName: "Katrin" }, { givenName: "Thomas" }] },
   { visitors: [{ givenName: "Selina" }, { givenName: "Tizian" }] },

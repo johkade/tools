@@ -52,5 +52,5 @@ export default function OurMarriage(props: { searchParams?: SearchParams }) {
 
 function getGuests(params: SearchParams | undefined) {
   if (!params?.guests) return null
-  return params.guests.split("-")
+  return params.guests.split("-").map((n) => n.replace("_", ""))
 }
