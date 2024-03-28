@@ -84,7 +84,7 @@ export const FoodChoice = ({ locale, guests }: FoodChoiceProps) => {
         title={translations.foodChoice.sectionTitle[amount][locale]}
         className="mb-4 text-center"
       />
-      <Typo size="3xl" className="mb-4">
+      <Typo size="3xl" className="mb-4 text-center">
         {translations.foodChoice.subTitle[amount][locale]}
       </Typo>
       <div className="bg-background rounded-3xl flex flex-col">
