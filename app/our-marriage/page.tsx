@@ -36,9 +36,9 @@ export default function OurMarriage(props: { searchParams?: SearchParams }) {
         <Separator />
         <AreYouIn guests={guests} locale={locale} />
         <Separator />
-        <FoodChoice guests={guests} locale={locale} />
-        <Separator />
         <Location locale={locale} />
+        <Separator />
+        <FoodChoice guests={guests} locale={locale} />
         <Separator />
         <SongWishes guests={guests} locale={locale} />
         <Separator />

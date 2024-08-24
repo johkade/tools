@@ -1,21 +1,26 @@
 "use client"
+import { cn } from "@/utils/styling"
+import { showToast } from "@/utils/toast"
+import autoAnimate from "@formkit/auto-animate"
 import { useEffect, useRef, useState } from "react"
 import { SectionTitle } from "../../components/section-title"
-import { cn } from "@/utils/styling"
-import autoAnimate from "@formkit/auto-animate"
-import { showToast } from "@/utils/toast"
+import { Typo } from "@/app/components/typo"
 
 const translations = {
   areYouIn: {
     sectionTitle: {
       multiple: {
-        de: "Seid ihr dabei?",
-        en: "Are you in?",
+        de: "Wann geht es los?",
+        en: "When does it start?",
       },
       single: {
-        de: "Bist du dabei?",
-        en: "Are you in?",
+        de: "Wann geht es los?",
+        en: "When does it start?",
       },
+    },
+    text: {
+      de: "15:00 Uhr",
+      en: "3 pm",
     },
     yes: {
       de: "Natürlich",
@@ -152,63 +157,66 @@ export const AreYouIn = ({ locale, guests }: AreYouInProps) => {
         title={translations.areYouIn.sectionTitle[amount][locale]}
         className="mb-4 text-center"
       />
-      <div
-        className={cn(
-          "flex flex-row gap-4 transition-all py-6 px-10 bg-background rounded-3xl",
-          isIn === "yes"
-            ? "translate-x-16"
-            : isIn === "no"
-            ? "-translate-x-16"
-            : ""
-        )}
-        ref={animatedParent}
-      >
-        <button
-          onClick={() => {
-            if (isIn === "yes") return
-            const message =
-              translations.toasts[amount].yes[randomIntFromInterval(0, 4)][
-                locale
-              ]
-            if (typeof message === "string") showToast(message)
+      <Typo size="4xl">{translations.areYouIn.text[locale]}</Typo>
+      {false && (
+        <div
+          className={cn(
+            "flex flex-row gap-4 transition-all py-6 px-10 bg-background rounded-3xl",
+            isIn === "yes"
+              ? "translate-x-16"
+              : isIn === "no"
+              ? "-translate-x-16"
+              : ""
+          )}
+          ref={animatedParent}
+        >
+          <button
+            onClick={() => {
+              if (isIn === "yes") return
+              const message =
+                translations.toasts[amount].yes[randomIntFromInterval(0, 4)][
+                  locale
+                ]
+              if (typeof message === "string") showToast(message)
 
-            sendAreYouIn(by, true).catch(() => {})
-            setIsIn("yes")
-          }}
-          className={cn(
-            "flex flex-col text-3xl text-foreground-default border-2 border-border-dark rounded-2xl px-3 py-2 bg-[#ebd892] transition-all",
-            isIn === "yes"
-              ? "scale-125"
-              : isIn === "no"
-              ? "scale-75 opacity-75"
-              : ""
-          )}
-        >
-          {translations.areYouIn.yes[locale]}
-        </button>
-        <button
-          onClick={() => {
-            if (isIn === "no") return
-            const message =
-              translations.toasts[amount].no[randomIntFromInterval(0, 4)][
-                locale
-              ]
-            if (typeof message === "string") showToast(message)
-            sendAreYouIn(by, false).catch(() => {})
-            setIsIn("no")
-          }}
-          className={cn(
-            "flex flex-col text-3xl text-foreground-default border-2 border-border-dark rounded-2xl px-3 py-2 bg-[#e49f7d] transition-all",
-            isIn === "yes"
-              ? "scale-75 opacity-75"
-              : isIn === "no"
-              ? "scale-125"
-              : ""
-          )}
-        >
-          {translations.areYouIn.no[locale]}
-        </button>
-      </div>
+              sendAreYouIn(by, true).catch(() => {})
+              setIsIn("yes")
+            }}
+            className={cn(
+              "flex flex-col text-3xl text-foreground-default border-2 border-border-dark rounded-2xl px-3 py-2 bg-[#ebd892] transition-all",
+              isIn === "yes"
+                ? "scale-125"
+                : isIn === "no"
+                ? "scale-75 opacity-75"
+                : ""
+            )}
+          >
+            {translations.areYouIn.yes[locale]}
+          </button>
+          <button
+            onClick={() => {
+              if (isIn === "no") return
+              const message =
+                translations.toasts[amount].no[randomIntFromInterval(0, 4)][
+                  locale
+                ]
+              if (typeof message === "string") showToast(message)
+              sendAreYouIn(by, false).catch(() => {})
+              setIsIn("no")
+            }}
+            className={cn(
+              "flex flex-col text-3xl text-foreground-default border-2 border-border-dark rounded-2xl px-3 py-2 bg-[#e49f7d] transition-all",
+              isIn === "yes"
+                ? "scale-75 opacity-75"
+                : isIn === "no"
+                ? "scale-125"
+                : ""
+            )}
+          >
+            {translations.areYouIn.no[locale]}
+          </button>
+        </div>
+      )}
     </div>
   )
 }

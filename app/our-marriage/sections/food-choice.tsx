@@ -20,12 +20,12 @@ const translations = {
     },
     subTitle: {
       multiple: {
-        de: "Wählt hier euer Essen, sobald das Menü feststeht.",
-        en: "Select your meal as soon as the menu is fixed.",
+        de: "Ihr könnt euer Gericht vor Ort auswählen. zur Auswahl stehen Fleisch, Fisch und Veggie.",
+        en: "Select your meal on site, you can choose between meat, fish and veggie.",
       },
       single: {
-        de: "Wähle hier dein Essen, sobald das Menü feststeht.",
-        en: "Select your meal as soon as the menu is fixed.",
+        de: "Du kannst dein Gericht vor Ort auswählen. zur Auswahl stehen Fleisch, Fisch und Veggie",
+        en: "Select your meal on site, you can choose between meat, fish and veggie.",
       },
     },
   },
